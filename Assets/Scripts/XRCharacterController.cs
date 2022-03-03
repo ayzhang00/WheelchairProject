@@ -22,30 +22,32 @@ public class XRCharacterController : MonoBehaviour
     private float localZAxis;
     private float moveR;
 
+    // Called at the very beginning, before start (not necessary but useful)
     private void Awake()
     {
         // collect components
         character = GetComponent<CharacterController>();
     }
+    // Called at the start, when everything is loaded from awake
     private void Start()
     {
-        // initialize devices
+        // initialize left devices
         List<InputDevice> devicesL = new List<InputDevice>();
-        List<InputDevice> devicesR = new List<InputDevice>();
-
         InputDeviceCharacteristics leftControllerC = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-        InputDeviceCharacteristics rightControllerC = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-
         InputDevices.GetDevicesWithCharacteristics(leftControllerC, devicesL);
+
+        // initialize right devices
+        List<InputDevice> devicesR = new List<InputDevice>();
+        InputDeviceCharacteristics rightControllerC = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
         InputDevices.GetDevicesWithCharacteristics(rightControllerC, devicesR);
         
-
+        // grab first device from each list
         if (devicesL.Count > 0 && devicesR.Count > 0) {
             deviceL = devicesL[0];
             deviceR = devicesR[0];
         }
 
-        // set last position and local z axis
+        // set local z axis
         if (deviceR.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 posR))
         {
             localZAxis = posR.z;
@@ -71,6 +73,9 @@ public class XRCharacterController : MonoBehaviour
             // rotRX is angular rotation along x axis
             float rotRX = rotR.x;
             // z coordinate in relation to the local z axis
+
+            // if z coordinate is on the negative side of local axis
+            // reverse angular velocity
             if (Mathf.Abs(newPosR.z) < Mathf.Abs(localZAxis)) {
                 rotRX *= -1.0f;
             }
@@ -89,9 +94,10 @@ public class XRCharacterController : MonoBehaviour
         character.SimpleMove(movement);
     }
 
-    // get two 
+    // use two wheels
     private void CalculateDirection()
     {
 
     }
+    // can definitely add animation/mesh later
 }
