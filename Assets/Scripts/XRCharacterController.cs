@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRCharacterController : MonoBehaviour
 {
     // public values
-    public float speed = 1.0f;
+    public float InvSpeed = 1.0f;
 
     // References
     // public Transform mesh = null;
@@ -22,11 +22,14 @@ public class XRCharacterController : MonoBehaviour
     private float localZAxis;
     private float moveR;
 
+    private bool canMove = true;
+
     // Called at the very beginning, before start (not necessary but useful)
     private void Awake()
     {
         // collect components
-        character = GetComponent<CharacterController>();
+        // character = GetComponent<CharacterController>();
+        
     }
     // Called at the start, when everything is loaded from awake
     private void Start()
@@ -46,7 +49,6 @@ public class XRCharacterController : MonoBehaviour
             deviceL = devicesL[0];
             deviceR = devicesR[0];
         }
-
         // set local z axis
         if (deviceR.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 posR))
         {
@@ -60,13 +62,15 @@ public class XRCharacterController : MonoBehaviour
         if (deviceL != null && deviceR != null) {
             CheckForMovement();
         }
+        Debug.Log(canMove);
+        canMove = GetComponent<CurbDialogue>().canMove;
     }
 
     // checks for movement, sets direction, and applies movement
     private void CheckForMovement() 
     {
         // check for value
-        if (deviceR.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 newPosR) &&
+        if (canMove && deviceR.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 newPosR) &&
             deviceR.TryGetFeatureValue(CommonUsages.deviceAngularVelocity, out Vector3 rotR))
         {   
             // calculate move speed
@@ -90,8 +94,10 @@ public class XRCharacterController : MonoBehaviour
     {
         // get normalized and act as arc length 
         // for now only do the r movement
-        Vector3 movement = currentDirection * (moveR * speed);
-        character.SimpleMove(movement);
+        Vector3 movement = currentDirection * (moveR / InvSpeed);
+        transform.forward = currentDirection;
+        transform.position += currentDirection * (moveR / InvSpeed);
+        // character.SimpleMove(movement);
     }
 
     // use two wheels
