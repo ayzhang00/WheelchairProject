@@ -101,7 +101,7 @@
     },
     "com.unity.searcher": {
       "version": "4.3.2",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -124,7 +124,7 @@
     },
     "com.unity.shadergraph": {
       "version": "10.8.1",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.render-pipelines.core": "10.8.1",
@@ -230,12 +230,12 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.subsystemregistration": "1.0.6"
+        "com.unity.subsystemregistration": "1.0.5"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.legacyinputhelpers": {
-      "version": "2.1.8",
+      "version": "2.1.9",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -279,7 +279,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.windowsmr": {
-      "version": "4.6.1",
+      "version": "4.6.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
