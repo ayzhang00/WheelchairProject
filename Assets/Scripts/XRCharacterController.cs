@@ -73,21 +73,17 @@ public class XRCharacterController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        GetInput();
-        Move();
+        // GetInput();
+        // Steer angle should never change
 
-        //if (deviceL != null && deviceR != null) {
-        //    CheckForMovement();
-        //}
+        if (deviceL != null && deviceR != null) {
+           CheckForMovement();
+           Move();
+        }
 
         UpdateWheelPoses();
 
     }
-
-
-
-
-
 
   // checks for movement, sets direction, and applies movement
   private void CheckForMovement()
@@ -145,7 +141,7 @@ public class XRCharacterController : MonoBehaviour
 
         _collider.GetWorldPose(out _pos, out _quat);
 
-        _transform.position = _pos;
+        // _transform.position = _pos;
         _transform.rotation = _quat;
     }
 
@@ -153,21 +149,7 @@ public class XRCharacterController : MonoBehaviour
 
     private void Move()
     {
-        leftWheelW.motorTorque = m_horizontalInput * motorForce;
-        rightWheelW.motorTorque = m_verticalInput * motorForce;
-
+        rightWheelW.motorTorque = moveR * motorForce;
+        leftWheelW.motorTorque = moveL * motorForce;
     }
-
-
-
-
-    //For debug purposes, using get horizantal input.
-    public void GetInput()
-    {
-        m_horizontalInput = Input.GetAxis("Horizontal");
-        m_verticalInput = Input.GetAxis("Vertical");
-
-    }
-
-
 }
