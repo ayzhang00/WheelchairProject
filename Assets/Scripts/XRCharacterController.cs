@@ -149,7 +149,18 @@ public class XRCharacterController : MonoBehaviour
 
     private void Move()
     {
-        rightWheelW.motorTorque = moveR * motorForce;
+        Debug.Log(moveR);
+        Debug.Log(rightWheelW.brakeTorque);
+        if (Mathf.Abs(moveR) <= 0.1f) rightWheelW.brakeTorque = 100;
+        else rightWheelW.brakeTorque = 0;
+        if (Mathf.Abs(moveL) <= 0.1f) leftWheelW.brakeTorque = 100;
+        else leftWheelW.brakeTorque = 0;
+
         leftWheelW.motorTorque = moveL * motorForce;
+        rightWheelW.motorTorque = moveR * motorForce;
+        // rightWheelW.brakeTorque = 0;
+        // leftWheelW.brakeTorque = 0;
+        // rightWheelW.motorTorque = moveR * motorForce;
+        // leftWheelW.motorTorque = moveL * motorForce;
     }
 }
