@@ -23,6 +23,7 @@ public class XRCharacterController : MonoBehaviour
 
     // Components
     private CharacterController character = null;
+    private Rigidbody wheelchairRigid = null;
 
     // Values
     private Vector3 currentDirection = new Vector3(0.0f, 0.0f, 1.0f);
@@ -37,6 +38,9 @@ public class XRCharacterController : MonoBehaviour
     private float R_accellCounter = 0;
     private float L_accellCounter = 0;
 
+    //For Speed
+    private float WheelchairSpeed;
+
 
 
   // Called at the very beginning, before start (not necessary but useful)
@@ -44,6 +48,7 @@ public class XRCharacterController : MonoBehaviour
     {
         // collect components
         character = GetComponent<CharacterController>();
+        wheelchairRigid = GetComponent<Rigidbody>();
     }
 
 
@@ -96,6 +101,7 @@ public class XRCharacterController : MonoBehaviour
         }
 
         UpdateWheelPoses();
+        UpdateSpeed();
 
     }
 
@@ -114,6 +120,7 @@ public class XRCharacterController : MonoBehaviour
           // rotRX is angular rotation along x axis
           float rotRX = rotR.x;
           // z coordinate in relation to the local z axis
+
 
           // if z coordinate is on the negative side of local axis
           // reverse angular velocity
@@ -159,8 +166,6 @@ public class XRCharacterController : MonoBehaviour
         _transform.rotation = _quat;
     }
 
-
-
     private void Move()
     {
         Debug.Log(moveR);
@@ -184,6 +189,23 @@ public class XRCharacterController : MonoBehaviour
         // leftWheelW.motorTorque = moveL * motorForce;
     }
 
+
+    private void UpdateSpeed(){
+        WheelchairSpeed = wheelchairRigid.velocity.magnitude;
+        Debug.Log(WheelchairSpeed);
+
+    }
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    //////////////////Functions for Debugging///////////////////////
+    ////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+
     private void debug_Move()
     {
         float factor = 0.2f;
@@ -201,13 +223,6 @@ public class XRCharacterController : MonoBehaviour
             leftWheelW.brakeTorque = 0;
             leftWheelW.motorTorque = moveL;
         }
-
-
-
-        // rightWheelW.brakeTorque = 0;
-        // leftWheelW.brakeTorque = 0;
-        // rightWheelW.motorTorque = moveR * motorForce;
-        // leftWheelW.motorTorque = moveL * motorForce;
     }
 
     private void debug_KeyMovement(){
