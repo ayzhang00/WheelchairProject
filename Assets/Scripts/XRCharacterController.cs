@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRCharacterController : MonoBehaviour
 {
 
-    public bool debug = false;
+    public bool debugMode = false;
 
     public WheelCollider leftWheelW, rightWheelW;
     public Transform leftWheelT, rightWheelT;
@@ -85,9 +85,9 @@ public class XRCharacterController : MonoBehaviour
         // GetInput();
         // Steer angle should never change
 
-        if(debug){
+        if(debugMode){
           debug_KeyMovement();
-          DebugMove();
+          debug_Move();
 
         }
         else if (deviceL != null && deviceR != null) {
@@ -184,7 +184,7 @@ public class XRCharacterController : MonoBehaviour
         // leftWheelW.motorTorque = moveL * motorForce;
     }
 
-    private void DebugMove()
+    private void debug_Move()
     {
         float factor = 0.2f;
 
