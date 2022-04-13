@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRCharacterController : MonoBehaviour
+public class DebugXRCharacterController : MonoBehaviour
 {
-
-    public bool debug = false;
 
     public WheelCollider leftWheelW, rightWheelW;
     public Transform leftWheelT, rightWheelT;
@@ -30,13 +28,6 @@ public class XRCharacterController : MonoBehaviour
     private float localZAxis_L;
     private float moveR;
     private float moveL;
-
-
-
-    //Debug Values
-    private float R_accellCounter = 0;
-    private float L_accellCounter = 0;
-
 
 
   // Called at the very beginning, before start (not necessary but useful)
@@ -85,12 +76,7 @@ public class XRCharacterController : MonoBehaviour
         // GetInput();
         // Steer angle should never change
 
-        if(debug){
-          debug_KeyMovement();
-          DebugMove();
-
-        }
-        else if (deviceL != null && deviceR != null) {
+        if (deviceL != null && deviceR != null) {
            CheckForMovement();
            Move();
         }
@@ -183,59 +169,4 @@ public class XRCharacterController : MonoBehaviour
         // rightWheelW.motorTorque = moveR * motorForce;
         // leftWheelW.motorTorque = moveL * motorForce;
     }
-
-    private void DebugMove()
-    {
-        float factor = 0.2f;
-
-        moveR = R_accellCounter * factor;
-        moveL = L_accellCounter * factor;
-
-        if (Mathf.Abs(moveR) <= 0.05f) rightWheelW.brakeTorque = 100;
-        else {
-            rightWheelW.brakeTorque = 0;
-            rightWheelW.motorTorque = moveR;
-        }
-        if (Mathf.Abs(moveL) <= 0.05f) leftWheelW.brakeTorque = 100;
-        else {
-            leftWheelW.brakeTorque = 0;
-            leftWheelW.motorTorque = moveL;
-        }
-
-
-
-        // rightWheelW.brakeTorque = 0;
-        // leftWheelW.brakeTorque = 0;
-        // rightWheelW.motorTorque = moveR * motorForce;
-        // leftWheelW.motorTorque = moveL * motorForce;
-    }
-
-    private void debug_KeyMovement(){
-      if (Input.GetKey(KeyCode.RightArrow)) {
-        R_accellCounter++;
-      } else {
-        if (R_accellCounter > -1){
-          R_accellCounter--;
-
-        }
-        else{
-          R_accellCounter = 0;
-        }
-      }
-
-      if (Input.GetKey(KeyCode.LeftArrow))
-      {
-        L_accellCounter++;
-      }
-      else
-      {
-        if (L_accellCounter > 0){
-          L_accellCounter--;
-        }
-      }
-
-    }
-
-
-
 }
