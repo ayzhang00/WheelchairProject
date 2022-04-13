@@ -98,6 +98,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roadwork_Sign (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2334830646326187502, guid: 749390be198a4ea47b8ee4617900bf7a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f38e4add2d2883a419a703492da63f72, type: 2}
+    - target: {fileID: 7293059144023096718, guid: 749390be198a4ea47b8ee4617900bf7a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8f4a5a576c2ebad4f87a570936c847f3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 749390be198a4ea47b8ee4617900bf7a, type: 3}
 --- !u!1 &6524103090355336732 stripped
