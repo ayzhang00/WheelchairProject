@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRCharacterController : MonoBehaviour
+public class DebugXRCharacterController : MonoBehaviour
 {
-
-    public bool debugMode = false;
 
     public WheelCollider leftWheelW, rightWheelW;
     public Transform leftWheelT, rightWheelT;
@@ -23,7 +21,6 @@ public class XRCharacterController : MonoBehaviour
 
     // Components
     private CharacterController character = null;
-    private Rigidbody wheelchairRigid = null;
 
     // Values
     private Vector3 currentDirection = new Vector3(0.0f, 0.0f, 1.0f);
@@ -33,22 +30,11 @@ public class XRCharacterController : MonoBehaviour
     private float moveL;
 
 
-
-    //Debug Values
-    private float R_accellCounter = 0;
-    private float L_accellCounter = 0;
-
-    //For Speed
-    private float WheelchairSpeed;
-
-
-
   // Called at the very beginning, before start (not necessary but useful)
     private void Awake()
     {
         // collect components
         character = GetComponent<CharacterController>();
-        wheelchairRigid = GetComponent<Rigidbody>();
     }
 
 
@@ -90,18 +76,12 @@ public class XRCharacterController : MonoBehaviour
         // GetInput();
         // Steer angle should never change
 
-        if(debugMode){
-          debug_KeyMovement();
-          debug_Move();
-
-        }
-        else if (deviceL != null && deviceR != null) {
+        if (deviceL != null && deviceR != null) {
            CheckForMovement();
            Move();
         }
 
         UpdateWheelPoses();
-        UpdateSpeed();
 
     }
 
@@ -120,7 +100,6 @@ public class XRCharacterController : MonoBehaviour
           // rotRX is angular rotation along x axis
           float rotRX = rotR.x;
           // z coordinate in relation to the local z axis
-
 
           // if z coordinate is on the negative side of local axis
           // reverse angular velocity
@@ -166,18 +145,18 @@ public class XRCharacterController : MonoBehaviour
         _transform.rotation = _quat;
     }
 
+
+
     private void Move()
     {
-        Debug.Log("here1" + moveR);
+        Debug.Log(moveR);
         Debug.Log(rightWheelW.brakeTorque);
-        if (Mathf.Abs(moveR) <= Mathf.Epsilon) rightWheelW.brakeTorque = 1000;
+        if (Mathf.Abs(moveR) <= 0.05f) rightWheelW.brakeTorque = 100;
         else {
             rightWheelW.brakeTorque = 0;
-            Debug.Log("here2" + moveR);
             rightWheelW.motorTorque = moveR * motorForce;
-            Debug.Log("movement:" + rightWheelW.motorTorque);
         }
-        if (Mathf.Abs(moveL) <= Mathf.Epsilon) leftWheelW.brakeTorque = 1000;
+        if (Mathf.Abs(moveL) <= 0.05f) leftWheelW.brakeTorque = 100;
         else {
             leftWheelW.brakeTorque = 0;
             leftWheelW.motorTorque = moveL * motorForce;
@@ -190,69 +169,4 @@ public class XRCharacterController : MonoBehaviour
         // rightWheelW.motorTorque = moveR * motorForce;
         // leftWheelW.motorTorque = moveL * motorForce;
     }
-
-
-    private void UpdateSpeed(){
-        WheelchairSpeed = wheelchairRigid.velocity.magnitude;
-        Debug.Log(WheelchairSpeed);
-
-    }
-
-
-
-
-
-    ////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////
-    //////////////////Functions for Debugging///////////////////////
-    ////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////
-
-    private void debug_Move()
-    {
-        float factor = 0.2f;
-
-        moveR = R_accellCounter * factor;
-        moveL = L_accellCounter * factor;
-
-        if (Mathf.Abs(moveR) <= 0.05f) rightWheelW.brakeTorque = 100;
-        else {
-            rightWheelW.brakeTorque = 0;
-            rightWheelW.motorTorque = moveR;
-        }
-        if (Mathf.Abs(moveL) <= 0.05f) leftWheelW.brakeTorque = 100;
-        else {
-            leftWheelW.brakeTorque = 0;
-            leftWheelW.motorTorque = moveL;
-        }
-    }
-
-    private void debug_KeyMovement(){
-      if (Input.GetKey(KeyCode.RightArrow)) {
-        R_accellCounter++;
-      } else {
-        if (R_accellCounter > -1){
-          R_accellCounter--;
-
-        }
-        else{
-          R_accellCounter = 0;
-        }
-      }
-
-      if (Input.GetKey(KeyCode.LeftArrow))
-      {
-        L_accellCounter++;
-      }
-      else
-      {
-        if (L_accellCounter > 0){
-          L_accellCounter--;
-        }
-      }
-
-    }
-
-
-
 }
