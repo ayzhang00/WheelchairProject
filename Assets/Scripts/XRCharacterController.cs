@@ -194,8 +194,6 @@ public class XRCharacterController : MonoBehaviour
 
     private void UpdateSpeed(){
         WheelchairSpeed = wheelchairRigid.velocity.magnitude;
-        Debug.Log(WheelchairSpeed);
-
     }
 
 
