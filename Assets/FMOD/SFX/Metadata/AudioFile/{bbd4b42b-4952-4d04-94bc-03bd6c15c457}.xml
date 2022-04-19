@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bbd4b42b-4952-4d04-94bc-03bd6c15c457}">
+		<property name="assetPath">
+			<value>444782__ross-sinc__bicycle-spokes-spinning.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>13.701746031746032</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66acd2a5-158a-4816-90ce-838715d11b9d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using FMODUnity;
 
 public class XRCharacterController : MonoBehaviour
 {
@@ -41,9 +42,12 @@ public class XRCharacterController : MonoBehaviour
     //For Speed
     private float WheelchairSpeed;
 
+    //Fmod reference (for audio)
+    FMOD.Studio.EventInstance wheels;
+    [FMODUnity.EventRef]
+    FMOD.Studio.PARAMETER_ID wheelSpeedID;
 
-
-  // Called at the very beginning, before start (not necessary but useful)
+    // Called at the very beginning, before start (not necessary but useful)
     private void Awake()
     {
         // collect components
@@ -81,6 +85,18 @@ public class XRCharacterController : MonoBehaviour
             localZAxis_L = posL.z;
         }
 
+        // Create FMOD instance & attach to game object
+        wheels = FMODUnity.RuntimeManager.CreateInstance("event:/Wheels");
+
+        FMOD.Studio.EventDescription wheelsEventDescription;
+        wheels.getDescription(out wheelsEventDescription);
+        FMOD.Studio.PARAMETER_DESCRIPTION wheelsParameterDescription;
+        wheelsEventDescription.getParameterDescriptionByName("WheelSpeed", out wheelsParameterDescription);
+        wheelSpeedID = wheelsParameterDescription.id;
+
+        wheels.start();
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(wheels, GetComponent<Transform>(), GetComponent<Rigidbody>());
+
     }
 
 
@@ -103,10 +119,14 @@ public class XRCharacterController : MonoBehaviour
         UpdateWheelPoses();
         UpdateSpeed();
 
+        //update wheelspeed for fmod
+        wheels.setParameterByID(wheelSpeedID, WheelchairSpeed);
+
+
     }
 
-  // checks for movement, sets direction, and applies movement
-  private void CheckForMovement()
+    // checks for movement, sets direction, and applies movement
+    private void CheckForMovement()
   {
       //Resets At beginning to ensure PlayerMovement
       moveR = 0;
