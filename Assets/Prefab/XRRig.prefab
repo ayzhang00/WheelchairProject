@@ -161,12 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e73c95ca677dc4683c4f02b1a0f0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
+  debugMode: 1
   leftWheelW: {fileID: 465190452175992970}
-  rightWheelW: {fileID: 0}
+  rightWheelW: {fileID: 1204931756}
   leftWheelT: {fileID: 465190451240161244}
   rightWheelT: {fileID: 465190452569871223}
-  motorForce: 100
+  motorForce: 1000
 --- !u!65 &465190450795004645
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -178,8 +178,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47799683, y: 1.103714, z: 1.1049881}
-  m_Center: {x: 0.0425148, y: -0.14195633, z: -0.16054153}
+  m_Size: {x: 0.47799683, y: 0.96996784, z: 1.1049881}
+  m_Center: {x: 0.0425148, y: -0.075083315, z: -0.16054155}
 --- !u!1 &465190450872615498
 GameObject:
   m_ObjectHideFlags: 0

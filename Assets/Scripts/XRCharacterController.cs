@@ -228,46 +228,50 @@ public class XRCharacterController : MonoBehaviour
 
     private void debug_Move()
     {
-        float factor = 0.2f;
+        float factor = .2f;
 
         moveR = R_accellCounter * factor;
         moveL = L_accellCounter * factor;
 
-        if (Mathf.Abs(moveR) <= 0.05f) rightWheelW.brakeTorque = 100;
+        if (Mathf.Abs(moveR) <= 0.05f) rightWheelW.brakeTorque = 1000;
         else {
             rightWheelW.brakeTorque = 0;
-            rightWheelW.motorTorque = moveR;
+            rightWheelW.motorTorque = moveR*motorForce;
         }
-        if (Mathf.Abs(moveL) <= 0.05f) leftWheelW.brakeTorque = 100;
+        if (Mathf.Abs(moveL) <= 0.05f) leftWheelW.brakeTorque = 1000;
         else {
             leftWheelW.brakeTorque = 0;
-            leftWheelW.motorTorque = moveL;
+            leftWheelW.motorTorque = moveL*motorForce;
         }
     }
 
     private void debug_KeyMovement(){
-      if (Input.GetKey(KeyCode.RightArrow)) {
-        R_accellCounter++;
-      } else {
-        if (R_accellCounter > -1){
-          R_accellCounter--;
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            R_accellCounter=10;
         }
-        else{
-          R_accellCounter = 0;
+        else if (Input.GetKey(KeyCode.A))
+        {
+            R_accellCounter=-10;
         }
-      }
+        else
+        {
+            R_accellCounter = 0;
+        }
 
-      if (Input.GetKey(KeyCode.LeftArrow))
-      {
-        L_accellCounter++;
-      }
-      else
-      {
-        if (L_accellCounter > 0){
-          L_accellCounter--;
+        if (Input.GetKey(KeyCode.E))
+        {
+            L_accellCounter=10;
         }
-      }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            L_accellCounter=-10;
+        }
+        else
+        {
+            L_accellCounter = 0;
+        }
 
     }
 
