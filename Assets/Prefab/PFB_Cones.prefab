@@ -113,6 +113,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roadwork_Cone
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d413d7fe42cacb479983c00fc6cbc2e,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d413d7fe42cacb479983c00fc6cbc2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d413d7fe42cacb479983c00fc6cbc2e, type: 3}
 --- !u!1 &1707606744437405615 stripped

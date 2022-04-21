@@ -93,6 +93,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3821253740895256905, guid: 749390be198a4ea47b8ee4617900bf7a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3821253740895256905, guid: 749390be198a4ea47b8ee4617900bf7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 749390be198a4ea47b8ee4617900bf7a,
         type: 3}
       propertyPath: m_Name
@@ -103,6 +113,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f38e4add2d2883a419a703492da63f72, type: 2}
+    - target: {fileID: 5619302609615435187, guid: 749390be198a4ea47b8ee4617900bf7a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619302609615435187, guid: 749390be198a4ea47b8ee4617900bf7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7293059144023096718, guid: 749390be198a4ea47b8ee4617900bf7a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

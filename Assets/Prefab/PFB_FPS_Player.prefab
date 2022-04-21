@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 362905331051636668}
   - component: {fileID: 6110371531171693598}
   - component: {fileID: 1928249194630061913}
+  - component: {fileID: 5080337139924417742}
   m_Layer: 0
   m_Name: PFB_FPS_Player
   m_TagString: Untagged
@@ -270,7 +271,20 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &5080337139924417742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913564804395345518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.71, z: 0}
 --- !u!1001 &566546124568925272
 PrefabInstance:
   m_ObjectHideFlags: 0
