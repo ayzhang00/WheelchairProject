@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{31c53102-a66c-4265-b37a-3843d9bcaa15}">
+		<property name="assetPath">
+			<value>407513__1kaylin-dickson__man-humming.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66acd2a5-158a-4816-90ce-838715d11b9d}</destination>
+		</relationship>
+	</object>
+</objects>
