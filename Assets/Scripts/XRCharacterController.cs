@@ -190,14 +190,14 @@ public class XRCharacterController : MonoBehaviour
     {
         Debug.Log("here1" + moveR);
         Debug.Log(rightWheelW.brakeTorque);
-        if (Mathf.Abs(moveR) <= Mathf.Epsilon) rightWheelW.brakeTorque = 1000;
+        if (Mathf.Abs(moveR) <= Mathf.Epsilon) rightWheelW.brakeTorque = 10000;
         else {
             rightWheelW.brakeTorque = 0;
             Debug.Log("here2" + moveR);
             rightWheelW.motorTorque = moveR * motorForce;
             Debug.Log("movement:" + rightWheelW.motorTorque);
         }
-        if (Mathf.Abs(moveL) <= Mathf.Epsilon) leftWheelW.brakeTorque = 1000;
+        if (Mathf.Abs(moveL) <= Mathf.Epsilon) leftWheelW.brakeTorque = 10000;
         else {
             leftWheelW.brakeTorque = 0;
             leftWheelW.motorTorque = moveL * motorForce;
@@ -249,28 +249,28 @@ public class XRCharacterController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            R_accellCounter=10;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            R_accellCounter=-10;
-        }
-        else
-        {
-            R_accellCounter = 0;
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
             L_accellCounter=10;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.A))
         {
             L_accellCounter=-10;
         }
         else
         {
             L_accellCounter = 0;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            R_accellCounter=10;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            R_accellCounter=-10;
+        }
+        else
+        {
+            R_accellCounter = 0;
         }
 
     }
