@@ -179,6 +179,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{692deb1c-c5c2-4028-81cb-d7a5e9a24188}">
+		<property name="volume">
+			<value>-7.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -213,7 +216,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="root">
-			<value>5</value>
+			<value>9.5</value>
 		</property>
 		<property name="pitchAtMinimum">
 			<value>0.919999957</value>
@@ -277,12 +280,12 @@
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>0.397345781</value>
+			<value>0.142897695</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{6c886c9b-22e5-4472-afe0-840f14634ab0}">
 		<property name="position">
-			<value>0.14999999999999999</value>
+			<value>1.5</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -306,7 +309,7 @@
 			<value>0.13957307060755336</value>
 		</property>
 		<property name="value">
-			<value>-4</value>
+			<value>-16</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{85c82266-4659-47d3-97b6-9d6cf7d15f40}">
