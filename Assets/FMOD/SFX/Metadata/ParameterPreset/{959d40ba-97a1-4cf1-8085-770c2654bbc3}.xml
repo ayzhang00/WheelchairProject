@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{959d40ba-97a1-4cf1-8085-770c2654bbc3}">
+		<property name="name">
+			<value>Humming</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a30a467a-78e1-4916-aee9-943f1a627d06}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{384b1a9d-b92c-4465-9cff-79421539bec3}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{384b1a9d-b92c-4465-9cff-79421539bec3}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
